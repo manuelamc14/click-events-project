@@ -1,7 +1,8 @@
 // from data.js
 var tableData = data;
 
-// YOUR CODE HERE!
+// POPULATE THE INFORMATION TABLE
+
 console.log(tableData)
 
 // Get a reference cor the table body
@@ -16,3 +17,42 @@ tableData.forEach((city) => {
         cell.text(value);
     });
 });
+
+// FILTER THE INFORMATION
+
+// Select the button
+
+var button = d3.select("#filter-btn");
+
+// Create event handler
+
+button.on("click", runEnter);
+
+
+// Create a custom filtering function
+
+//function selectDate ()
+// Complete the event handler function for the form 
+
+function runEnter() {
+
+    // Prevent the page from refreshing
+    d3.event.preventDefault();
+
+    // Select the input element and get the raw HTML node
+
+    var inputDate = d3.select("#datetime");
+
+    var inputDateValue = inputDate.property("value");
+
+    console.log(inputDateValue);
+
+    function selectDate(tableData){
+       return tableData.datetime == inputDateValue;
+    }
+
+    var filteredData = tableData.filter(selectDate);
+
+    console.log(filteredData);
+
+};
