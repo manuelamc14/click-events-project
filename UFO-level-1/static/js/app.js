@@ -28,10 +28,6 @@ var button = d3.select("#filter-btn");
 
 button.on("click", runEnter);
 
-
-// Create a custom filtering function
-
-//function selectDate ()
 // Complete the event handler function for the form 
 
 function runEnter() {
@@ -46,6 +42,8 @@ function runEnter() {
     var inputDateValue = inputDate.property("value");
 
     console.log(inputDateValue);
+    
+    // Filter the information according to the input 
 
     function selectDate(tableData){
        return tableData.datetime == inputDateValue;
@@ -54,5 +52,19 @@ function runEnter() {
     var filteredData = tableData.filter(selectDate);
 
     console.log(filteredData);
+
+    // Clean the table information
+
+    tbody.html("");
+
+    // Populate the new information
+
+    filteredData.forEach((city) => {
+        var row = tbody.append("tr");
+        Object.entries(city).forEach(([key, value]) =>{
+            var cell = row.append("td");
+            cell.text(value);
+        });
+    });
 
 };
