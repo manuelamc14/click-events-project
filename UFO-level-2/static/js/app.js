@@ -143,7 +143,7 @@ function runEnterState() {
 
     console.log(filteredData);
 
-    // Clean the table information
+    // Clean the table information. 
 
     tbody.html("");
 
